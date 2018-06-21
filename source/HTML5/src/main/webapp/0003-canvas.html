@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML5</title>
+<style type="text/css">
+#myCanvas {
+	display: block;
+	border: 1px solid #cccccc;
+	width: 1000px;
+	height: 400px;
+}
+
+#xycoordinates {
+	float: right;
+}
+</style>
+</head>
+<body>
+	<h1>HTML5 自学笔记</h1>
+	<canvas id="myCanvas" onmousemove="cnvs_getCoordinates(event)"></canvas>
+	<div id="xycoordinates"></div>
+	<button id="line" onclick="line();">线</button>
+	<button id="rectangle" onclick="rectangle();">矩形</button>
+	<button id="roundness" onclick="roundness();">圆形</button>
+	<button id="gradually" onclick="gradually();">渐变</button>
+	<button id="image" onclick="image();">图片</button>
+</body>
+
+<script type="text/javascript">
+	var c = document.getElementById("myCanvas");
+	var cxt = c.getContext("2d");
+	function cnvs_getCoordinates(e) {
+		x = e.clientX;
+		y = e.clientY;
+		document.getElementById("xycoordinates").innerHTML = "Coordinates: ("
+				+ x + "," + y + ")";
+	}
+	function line() {
+		cxt.moveTo(10, 10);
+		cxt.lineTo(150, 50);
+		cxt.lineTo(10, 50);
+		cxt.stroke();
+	}
+	function rectangle() {
+		cxt.fillStyle = "#FF0000";
+		cxt.fillRect(10, 20, 150, 75);
+	}
+	function roundness() {
+		cxt.fillStyle = "#FF0000";
+		cxt.beginPath();
+		cxt.arc(70, 18, 15, 0, Math.PI * 2, true);
+		cxt.closePath();
+		cxt.fill();
+	}
+	function gradually() {
+		var grd = cxt.createLinearGradient(0, 0, 175, 50);
+		grd.addColorStop(0, "#FF0000");
+		grd.addColorStop(1, "#00FF00");
+		cxt.fillStyle = grd;
+		cxt.fillRect(0, 0, 175, 50);
+	}
+	function image() {
+		var img = new Image()
+		img.src = "resource/dragdrop.jpg"
+		cxt.drawImage(img, 0, 0);
+	}
+</script>
+</html>

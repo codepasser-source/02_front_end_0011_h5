@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML5</title>
+
+</head>
+<body>
+	<h1>HTML5 自学笔记</h1>
+	<video id="vedioControl" src="resource/love.ogg" width="320px"
+		height="240px" controls="controls" autoplay="autoplay"> Your
+		browser does not support the video tag.
+	</video>
+
+	<button onclick="playPause()">播放/暂停</button>
+	<button onclick="makeBig()">大</button>
+	<button onclick="makeNormal()">中</button>
+	<button onclick="makeSmall()">小</button>
+</body>
+
+<script type="text/javascript">
+	var vedioControl = document.getElementById("vedioControl");
+	function playPause() {
+		if (vedioControl.paused) {
+			vedioControl.play();
+		} else {
+			vedioControl.pause();
+		}
+	}
+</script>
+</html>
